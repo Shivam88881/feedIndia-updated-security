@@ -42,8 +42,9 @@ public class SecurityConfig {
                     CorsConfiguration configuration = new CorsConfiguration();
                     configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
                     configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-                    configuration.setAllowedHeaders(Arrays.asList("Content-Type", "application/json"));
+                    configuration.setAllowedHeaders(Arrays.asList("Content-Type", "X-CSRF-TOKEN", "x-csrf-token"));
                     configuration.setAllowCredentials(true);
+                    configuration.setExposedHeaders(Arrays.asList("X-CSRF-TOKEN","x-csrf-token"));
                     return configuration;
                 }))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
